@@ -76,4 +76,42 @@ public class ProbabilityAxioms {
 	public boolean areIndependentFromUnion(double pA, double pB, double pUnion) {
 		return (1-pUnion) == (1-pA)*(1-pB);
 	}
+	
+	/**
+	 * Calculates the conditional probability of one event given another, assuming
+	 * the probability of intersection is known.
+	 * @param pIntersection The probability of the intersection of A and B
+	 * @param pB The probability of event B
+	 * @return The probability of A, given that B has occurred
+	 */
+	public double conditionalProbability(double pIntersection, double pB) {
+		return pIntersection/pB;
+	}
+	
+	/**
+	 * Operates on arrays of doubles. Uses Bayes' rule to calculate a set of
+	 * conditional probabilities.<p>
+	 * Throws an ArrayIndexOutOfBoundsException if the input arrays are not of equal
+	 * length.
+	 * @param pConditionals An array of conditional probabilities for A given that
+	 * each of events B1, B2, ..., Bk have occurred
+	 * @param pBs An array of probabilities for events B1, B2, ..., Bk
+	 * @return An array of conditional probabilities for each of B1, B2, ..., Bk given
+	 * that A has occurred
+	 */
+	public double[] bayesianProbabilities(double[] pConditionals, double[] pBs) {
+		double[] probabilities = new double[Math.max(pConditionals.length, pBs.length)];
+		
+		for (int i = 0; i < probabilities.length; i++) {
+			double denominator = 0;
+			
+			for (int j = 0; j < probabilities.length; j++) {
+				denominator += pConditionals[j]*pBs[j];
+			}
+			
+			probabilities[i] = pConditionals[i]*pBs[i]/denominator;
+		}
+		
+		return probabilities;
+	}
 }
