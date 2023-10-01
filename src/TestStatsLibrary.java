@@ -21,12 +21,14 @@ public class TestStatsLibrary {
 		double mean = stats.findMean(testNumbers);
 		double median = stats.findMedian(testNumbers);
 		double mode = stats.findMode(testNumbers);
+		double variance = stats.variance(testNumbers);
 		double stdDev = stats.standardDeviation(testNumbers);
 		
 		System.out.println("testNumbers = " + testNumbers);
 		System.out.println("Average of testNumbers: " + mean);
 		System.out.println("Median of testNumbers: " + median);
 		System.out.println("Mode of testNumbers: " + mode);
+		System.out.println("Variance of testNumbers: " + variance);
 		System.out.println("Standard deviation of testNumbers: " + stdDev);
 		
 		testNumbers.add(6.0);

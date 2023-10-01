@@ -84,22 +84,18 @@ public class StatsLibrary {
 	}
 	
 	/**
-	 * Finds the standard deviation of a list of numbers. This is calculated as
-	 * follows: <p>
+	 * Finds the variance of a list of numbers. This is calculated as follows: <p>
 	 * 1. Find the mean. <p>
 	 * 2. Find each value's absolute deviation from the mean. <p>
 	 * 3. Square each absolute deviation from step 2. <p>
 	 * 4. Add up the squares from step 3. <p>
 	 * 5. Subtract one from the total number of values in the list. <p>
-	 * 6. Divide the sum from step 4 by the divisor from step 5. This produces a value
-	 * known as the "variance". <p>
-	 * 7. Find the square root of the variance. This is the standard deviation of the
-	 * list.
+	 * 6. Divide the sum from step 4 by the divisor from step 5.
 	 * 
 	 * @param userInputNumbers The list of numbers
-	 * @return The standard deviation
+	 * @return The variance
 	 */
-	public double standardDeviation(ArrayList<Double> userInputNumbers) {
+	public double variance(ArrayList<Double> userInputNumbers) {
 		double mean = findMean(userInputNumbers);
 		
 		double sum = 0;
@@ -108,9 +104,18 @@ public class StatsLibrary {
 			sum += deviation * deviation;
 		}
 		
-		double variance = sum / (userInputNumbers.size() - 1);
-		double result = Math.sqrt(variance);
+		double result = sum / (userInputNumbers.size() - 1);
 		
 		return result;
+	}
+	
+	/**
+	 * Finds the standard deviation of a list of numbers. This is just the square root
+	 * of the variance.
+	 * @param userInputNumbers The list of numbers
+	 * @return The standard deviation
+	 */
+	public double standardDeviation(ArrayList<Double> userInputNumbers) {
+		return Math.sqrt(variance(userInputNumbers));
 	}
 }
