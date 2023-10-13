@@ -1,5 +1,3 @@
-import java.math.BigDecimal;
-
 /**
  * Contains methods for calculations related to binomial distributions, including the
  * probabilities of succeeding a certain number of times after a certain number of
@@ -18,10 +16,10 @@ public class BinomialTheorem {
 	 * @return The probability of exactly y successes in n trials
 	 */
 	public double exactly(int n, int y, double p) {
-		BigDecimal choices = new BigDecimal(comsAndPerms.combinations(n, y));
-		BigDecimal individualProbs = new BigDecimal(Math.pow(p, y) * Math.pow(1-p, n-y));
+		double choices = comsAndPerms.combinations(n, y).doubleValue();
+		double individualProbs = Math.pow(p, y) * Math.pow(1-p, n-y);
 		
-		return choices.multiply(individualProbs).doubleValue();
+		return choices * individualProbs;
 	}
 	
 	/**
@@ -66,29 +64,17 @@ public class BinomialTheorem {
 	 * @return The expected number of successes after n trials
 	 */
 	public double expectedValue(int n, double p) {
-		double totalValue = 0;
-		
-		for (int i = 0; i <= n; i++) {
-			totalValue += exactly(n, i, p) * i;
-		}
-		
-		return totalValue;
+		return n*p;
 	}
 	
 	/**
-	 * Calculates variance.
+	 * Calculates variance. For a binomial distribution, this is actually just equal to
+	 * n*p*q, where q = 1-p.
 	 * @param n The number of trials
 	 * @param p The probability of success
 	 * @return The variance
 	 */
 	public double variance(int n, double p) {
-		double expected = expectedValue(n, p);
-		double totalValue = 0;
-		
-		for (int i = 0; i <= n; i++) {
-			totalValue += exactly(n, i, p) * Math.pow(i - expected, 2);
-		}
-		
-		return totalValue;
+		return n*p*(1-p);
 	}
 }
