@@ -5,7 +5,7 @@
  * 
  * @author Ian Mays
  */
-public class BinomialTheorem {
+public class BinomialDistribution {
 	private CombinationsAndPermutations comsAndPerms = new CombinationsAndPermutations();
 	
 	/**
