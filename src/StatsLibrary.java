@@ -8,13 +8,17 @@ import java.util.ArrayList;
  */
 public class StatsLibrary {
 	private ArrayListSorter sorter = new ArrayListSorter();
+	private StatsExceptionChecker checkFor = new StatsExceptionChecker();
 	
 	/**
 	 * Finds the mean (average) of a list of numbers.
 	 * @param userInputNumbers The list of numbers
 	 * @return The average of the list
+	 * @throws StatsException if the list is empty
 	 */
 	public double findMean(ArrayList<Double> userInputNumbers) {
+		checkFor.arrayNotBigEnough(userInputNumbers, 1);
+		
 		double sum = 0;
 		
 		for (double singleElement : userInputNumbers) {
@@ -32,8 +36,11 @@ public class StatsLibrary {
 	 * the average of the middle two values.
 	 * @param userInputNumbers The list of numbers
 	 * @return The median
+	 * @throws StatsException if the list is empty
 	 */
 	public double findMedian(ArrayList<Double> userInputNumbers) {
+		checkFor.arrayNotBigEnough(userInputNumbers, 1);
+		
 		ArrayList<Double> sortedNumbers = sorter.sort(userInputNumbers);
 		
 		if (sortedNumbers.size() % 2 == 0) {
@@ -52,8 +59,11 @@ public class StatsLibrary {
 	 * more distinct values, will return the smallest such value.
 	 * @param userInputNumbers The list of numbers
 	 * @return The mode
+	 * @throws StatsException if the list is empty
 	 */
 	public double findMode(ArrayList<Double> userInputNumbers) {
+		checkFor.arrayNotBigEnough(userInputNumbers, 1);
+		
 		ArrayList<Double> sortedNumbers = sorter.sort(userInputNumbers);
 		
 		int maxCount = 0;
@@ -94,8 +104,11 @@ public class StatsLibrary {
 	 * 
 	 * @param userInputNumbers The list of numbers
 	 * @return The variance
+	 * @throws StatsException if the list does not contain at least two elements
 	 */
 	public double variance(ArrayList<Double> userInputNumbers) {
+		checkFor.arrayNotBigEnough(userInputNumbers, 2);
+		
 		double mean = findMean(userInputNumbers);
 		
 		double sum = 0;
@@ -114,6 +127,7 @@ public class StatsLibrary {
 	 * of the variance.
 	 * @param userInputNumbers The list of numbers
 	 * @return The standard deviation
+	 * @throws StatsException if the list does not contain at least two elements
 	 */
 	public double standardDeviation(ArrayList<Double> userInputNumbers) {
 		return Math.sqrt(variance(userInputNumbers));

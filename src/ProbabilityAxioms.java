@@ -5,6 +5,8 @@
  * @author Ian Mays
  */
 public class ProbabilityAxioms {
+	private StatsExceptionChecker checkFor = new StatsExceptionChecker();
+	
 	/**
 	 * Calculates the probability of two events intersecting, assuming the probability
 	 * of one given another is known.
@@ -90,16 +92,23 @@ public class ProbabilityAxioms {
 	
 	/**
 	 * Operates on arrays of doubles. Uses Bayes' rule to calculate a set of
-	 * conditional probabilities.<p>
-	 * Throws an ArrayIndexOutOfBoundsException if the input arrays are not of equal
-	 * length.
+	 * conditional probabilities.
 	 * @param pConditionals An array of conditional probabilities for A given that
 	 * each of events B1, B2, ..., Bk have occurred
 	 * @param pBs An array of probabilities for events B1, B2, ..., Bk
 	 * @return An array of conditional probabilities for each of B1, B2, ..., Bk given
 	 * that A has occurred
+	 * @throws StatsException if the two arrays are different lengths, or if any of
+	 * the probabilities contained in either of them are not in the range 0 ≤ p ≤ 1
 	 */
 	public double[] bayesianProbabilities(double[] pConditionals, double[] pBs) {
+		checkFor.arraysNotEqualLength(pConditionals, pBs);
+		
+		for (int i = 0; i < pConditionals.length; i++) {
+			checkFor.probabilityOutOfRange(pConditionals[i]);
+			checkFor.probabilityOutOfRange(pBs[i]);
+		}
+		
 		double[] probabilities = new double[Math.max(pConditionals.length, pBs.length)];
 		
 		for (int i = 0; i < probabilities.length; i++) {
