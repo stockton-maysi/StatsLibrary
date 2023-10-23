@@ -84,6 +84,16 @@ public class StatsExceptionChecker {
 	}
 	
 	/**
+	 * @param n The average number of occurrences per time period
+	 * @throws StatsException if n is negative
+	 */
+	public void negativeOccurrenceRate(double n) {
+		if (n < 0) {
+			throw new StatsException("Occurrence rate cannot be negative");
+		}
+	}
+	
+	/**
 	 * @param n The number of trials
 	 * @throws StatsException if n = 0
 	 */
