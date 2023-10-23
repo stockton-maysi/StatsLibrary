@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 /**
- * Tester for StatsLibrary. Among other things, tests median with both odd- and
+ * Tester for NumericalMeasures. Among other things, tests median with both odd- and
  * even-sized lists.
  * 
  * @author Ian Mays
  */
-public class TestStatsLibrary {
+public class TestNumericalMeasures {
 	public static void main(String[] args) {
-		StatsLibrary stats = new StatsLibrary();
+		NumericalMeasures measures = new NumericalMeasures();
 		
 		ArrayList<Double> testNumbers = new ArrayList<>();
 		
@@ -18,11 +18,11 @@ public class TestStatsLibrary {
 		testNumbers.add(1.0);
 		testNumbers.add(3.0);
 		
-		double mean = stats.findMean(testNumbers);
-		double median = stats.findMedian(testNumbers);
-		double mode = stats.findMode(testNumbers);
-		double variance = stats.variance(testNumbers);
-		double stdDev = stats.standardDeviation(testNumbers);
+		double mean = measures.findMean(testNumbers);
+		double median = measures.findMedian(testNumbers);
+		double mode = measures.findMode(testNumbers);
+		double variance = measures.variance(testNumbers);
+		double stdDev = measures.standardDeviation(testNumbers);
 		
 		System.out.println("testNumbers = " + testNumbers);
 		System.out.println("Average of testNumbers: " + mean);
@@ -32,7 +32,7 @@ public class TestStatsLibrary {
 		System.out.println("Standard deviation of testNumbers: " + stdDev);
 		
 		testNumbers.add(6.0);
-		median = stats.findMedian(testNumbers);
+		median = measures.findMedian(testNumbers);
 		System.out.println();
 		System.out.println("testNumbers = " + testNumbers);
 		System.out.println("Median of testNumbers: " + median);

@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 
 /**
- * A library of statistical operations on ArrayLists. To be expanded as the semester
- * progresses.
+ * A library of basic statistical operations on ArrayLists.
  * 
  * @author Ian Mays
  */
-public class StatsLibrary {
+public class NumericalMeasures {
 	private ArrayListSorter sorter = new ArrayListSorter();
 	private StatsExceptionChecker checkFor = new StatsExceptionChecker();
 	
