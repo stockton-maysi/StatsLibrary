@@ -18,7 +18,7 @@ public class TestBinomialDistribution {
 		System.out.println("y   P(Y=y)    P(Y>=y)   P(Y<=y)");
 		
 		for (int i = 0; i <= n; i++) {
-			System.out.printf("%-3d %-9f %-9f %-9f \n", i, binomial.exactly(n, i, p), binomial.atLeast(n, i, p), binomial.atMost(n, i, p));
+			System.out.printf("%-3d %-9f %-9f %-9f\n", i, binomial.exactly(n, i, p), binomial.atLeast(n, i, p), binomial.atMost(n, i, p));
 		}
 		
 		System.out.println();

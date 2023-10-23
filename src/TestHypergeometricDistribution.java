@@ -20,7 +20,7 @@ public class TestHypergeometricDistribution {
 		System.out.println("y   P(Y=y)    P(Y>=y)   P(Y<=y)");
 		
 		for (int i = 0; i <= n; i++) {
-			System.out.printf("%-3d %-9f %-9f %-9f \n", i, hypergeometric.exactly(bigN, r, n, i), hypergeometric.atLeast(bigN, r, n, i), hypergeometric.atMost(bigN, r, n, i));
+			System.out.printf("%-3d %-9f %-9f %-9f\n", i, hypergeometric.exactly(bigN, r, n, i), hypergeometric.atLeast(bigN, r, n, i), hypergeometric.atMost(bigN, r, n, i));
 		}
 		
 		System.out.println();

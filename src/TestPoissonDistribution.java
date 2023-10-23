@@ -16,7 +16,7 @@ public class TestPoissonDistribution {
 		System.out.println("y   P(Y=y)    P(Y>=y)   P(Y<=y)");
 		
 		for (int i = 0; i <= 10; i++) {
-			System.out.printf("%-3d %-9f %-9f %-9f \n", i, poisson.exactly(lambda, i), poisson.atLeast(lambda, i), poisson.atMost(lambda, i));
+			System.out.printf("%-3d %-9f %-9f %-9f\n", i, poisson.exactly(lambda, i), poisson.atLeast(lambda, i), poisson.atMost(lambda, i));
 		}
 		
 		System.out.println();

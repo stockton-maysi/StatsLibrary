@@ -18,7 +18,7 @@ public class TestNegativeBinomialDistribution {
 		System.out.println("y   P(Y=y)    P(Y>=y)   P(Y<=y)");
 		
 		for (int i = r; i <= 50; i++) {
-			System.out.printf("%-3d %-9f %-9f %-9f \n", i, negativeBinomial.exactly(i, r, p), negativeBinomial.atLeast(i, r, p), negativeBinomial.atMost(i, r, p));
+			System.out.printf("%-3d %-9f %-9f %-9f\n", i, negativeBinomial.exactly(i, r, p), negativeBinomial.atLeast(i, r, p), negativeBinomial.atMost(i, r, p));
 		}
 		
 		System.out.println();

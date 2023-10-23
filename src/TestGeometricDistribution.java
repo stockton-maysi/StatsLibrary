@@ -16,7 +16,7 @@ public class TestGeometricDistribution {
 		System.out.println("y   P(Y=y)    P(Y>=y)   P(Y<=y)");
 		
 		for (int i = 1; i <= 10; i++) {
-			System.out.printf("%-3d %-9f %-9f %-9f \n", i, geometric.exactly(i, p), geometric.atLeast(i, p), geometric.atMost(i, p));
+			System.out.printf("%-3d %-9f %-9f %-9f\n", i, geometric.exactly(i, p), geometric.atLeast(i, p), geometric.atMost(i, p));
 		}
 		
 		System.out.println();
