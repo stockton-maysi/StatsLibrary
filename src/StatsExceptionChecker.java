@@ -134,4 +134,18 @@ public class StatsExceptionChecker {
 			throw new StatsException("ArrayList must have length of at least " + minSize);
 		}
 	}
+	
+	/**
+	 * @param min The minimum of a range
+	 * @param max The maximum of a range
+	 * @param exactlyAllowed Whether the range is allowed to have a size of zero
+	 * @throws StatsException if the maximum is less than the minimum
+	 */
+	public void badRange(double min, double max, boolean exactlyAllowed) {
+		if (max < min && exactlyAllowed) {
+			throw new StatsException("Maximum of range must be greater than or equal to minimum");
+		} else if (max <= min && !exactlyAllowed) {
+			throw new StatsException("Maximum of distribution must be strictly greater than minimum");
+		}
+	}
 }
