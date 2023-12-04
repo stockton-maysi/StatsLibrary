@@ -171,4 +171,25 @@ public class DiscreteMultivariateDistribution {
 		
 		return totalProb;
 	}
+	
+	/**
+	 * Determines whether y1 and y2 are independent of each other in a discrete
+	 * bivariate distribution.
+	 * @param p The bivariate probability function, as an array of arrays of doubles
+	 * @return true if y1 and y2 are independent, false if dependent
+	 * @throws StatsException if p is not a valid bivariate function
+	 */
+	public boolean isIndependent(double[][] p) {
+		checkFor.invalidMultivariate(p);
+		
+		for (int i = 0; i < p.length; i++) {
+			for (int j = 0; j < p[i].length; j++) {
+				if (p[i][j] != marginalProbability1(p, i) * marginalProbability2(p, j)) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
 }

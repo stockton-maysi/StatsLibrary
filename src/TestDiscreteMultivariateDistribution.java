@@ -1,7 +1,8 @@
 /**
  * Tester for DiscreteMultivariateDistribution. Finds both the joint probability,
  * joint distribution, marginal probability, conditional probability, and conditional
- * distribution outputs for each index in an array, and prints them as a table.
+ * distribution outputs for each index in an array, and prints them as a table. Also
+ * shows whether y1 and y2 are independent of each other.
  * 
  * @author Ian Mays
  */
@@ -137,5 +138,8 @@ public class TestDiscreteMultivariateDistribution {
 			
 			System.out.println();
 		}
+		
+		System.out.println();
+		System.out.println("y1 and y2 are independent? " + discreteMultivariate.isIndependent(p));
 	}
 }

@@ -167,7 +167,8 @@ public class StatsExceptionChecker {
 			}
 		}
 		
-		if (totalProb != 1) {
+		// allow tolerance of 0.000001 due to floating point errors
+		if (Math.abs(totalProb - 1) > 0.000001) {
 			throw new StatsException("Total probability must be equal to 1");
 		}
 		
