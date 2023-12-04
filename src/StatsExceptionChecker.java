@@ -148,4 +148,49 @@ public class StatsExceptionChecker {
 			throw new StatsException("Maximum of distribution must be strictly greater than minimum");
 		}
 	}
+	
+	/**
+	 * @param p The bivariate probability function, as an array of arrays of doubles
+	 * @throws StatsException if the total probability is not 1, or if the rows in the
+	 * array are of unequal lengths
+	 */
+	public void invalidMultivariate(double[][] p) {
+		double totalProb = 0;
+		int[] rowLengths = new int[p.length];
+		
+		for (int i = 0; i < p.length; i++) {
+			rowLengths[i] = p[i].length;
+			
+			for (int j = 0; j < p[i].length; j++) {
+				probabilityOutOfRange(p[i][j]);
+				totalProb += p[i][j];
+			}
+		}
+		
+		if (totalProb != 1) {
+			throw new StatsException("Total probability must be equal to 1");
+		}
+		
+		for (int i = 1; i < rowLengths.length; i++) {
+			if (rowLengths[i] != rowLengths[0]) {
+				throw new StatsException("Rows in probability array must be of equal length");
+			}
+		}
+	}
+	
+	/**
+	 * @param p The bivariate probability function, as an array of arrays of doubles
+	 * @param y1 The row index
+	 * @param y2 The column index
+	 * @throws StatsException if either y1 or y2 are outside the bounds of p
+	 */
+	public void indicesOutOfRange(double[][] p, int y1, int y2) {
+		if (y1 < 0 || y1 >= p.length) {
+			throw new StatsException("y1 must be in range of array (between 0 and " + (p.length-1) + ", inclusive");
+		}
+		
+		if (y2 < 0 || y2 >= p[0].length) {
+			throw new StatsException("y2 must be in range of array (between 0 and " + (p[0].length-1) + ", inclusive");
+		}
+	}
 }
